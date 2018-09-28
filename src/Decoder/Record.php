@@ -66,8 +66,6 @@ class Record
                     ));
                 }
             }
-
-            $record->addBalance($balance);
         }
     }
 
