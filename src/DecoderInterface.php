@@ -2,7 +2,7 @@
 namespace Genkgo\Camt;
 
 use DOMDocument;
-use Genkgo\Camt\Camt053\Message;
+use Genkgo\Camt\DTO\Message;
 
 interface DecoderInterface
 {

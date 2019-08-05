@@ -4,6 +4,7 @@ namespace Genkgo\Camt;
 use DateTimeImmutable;
 use DOMDocument;
 use Genkgo\Camt\DecoderInterface;
+use Genkgo\Camt\DTO\Message;
 use Genkgo\Camt\Exception\InvalidMessageException;
 use Genkgo\Camt\Util\StringToUnits;
 use Money\Currency;
@@ -49,7 +50,8 @@ class Decoder implements DecoderInterface
     private function validate(DOMDocument $document)
     {
         libxml_use_internal_errors(true);
-        $valid = $document->schemaValidate(dirname(__DIR__).$this->schemeDefinitionPath);
+        $schemaString = file_get_contents(dirname(__DIR__).$this->schemeDefinitionPath);
+        $valid = $document->schemaValidateSource($schemaString);
         $errors = libxml_get_errors();
         libxml_clear_errors();
 
